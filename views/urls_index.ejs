@@ -9,11 +9,12 @@
   <title>TinyApp</title>
 </head>
 <body style="font-size:20px; padding:50px;">
-    <h1>TinyApp</h1>
-    <p><%=  %></p>
+<% include partials/_header.ejs %>
+<h5><a href=" #Create New TinyURL"></a></h5> /*why not working */
     <ul>
+    <h4><strong>My URLs</strong></h4>
     <% for (var url in urls) { %>
-    <li><a href="<%= urls[url] %>"><%= url%> - <%= urls[url] %></a></li>
+    <li><strong><%= url%> :</strong> <a href="<%= urls[url] %>"><%= urls[url] %></a></li>
     <% }; %>
     </ul>
 </body>
