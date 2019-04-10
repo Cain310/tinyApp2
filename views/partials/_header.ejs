@@ -1,3 +1,14 @@
 <header>
 <h1 style="font-size:60px;">Tiny App</h1>
+<% if (!username) { %>
+<form action="/login" method="POST">
+    <input type="text" name="username" value="" placeholder="Username" />
+    <input type="submit" value="sign in" />
+</form>
+<% } else { %>
+<form action="/logout" method="POST">
+    <button type="submit" class="btn btn-primary">Sign Out</button>
+    <p>Logged in as <%= username %></p>
+    </form>
+<% }; %>
 </header>
