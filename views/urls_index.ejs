@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <title>TinyApp</title>
 </head>
@@ -14,9 +14,18 @@
     <ul>
     <h4><strong>My URLs</strong></h4>
     <% for (var url in urls) { %>
+    <div>
+     <a href= "/urls/<%= url %>" class= "form-inline">Edit</a>
+    </div>
+    <div>
+    <form method="POST" action="/urls/<%= url %>/delete" class= "form-inline">
+    <input type="submit" value="delete" />
+    </div>
     <li><strong><%= url%> :</strong> <a href="<%= urls[url] %>"><%= urls[url] %></a></li>
     <% }; %>
     </ul>
+    
+    </form>
 </body>
 </html>
 
