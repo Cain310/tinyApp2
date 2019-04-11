@@ -10,16 +10,17 @@
 </head>
 <body style="font-size:20px; padding:50px;">
 <% include partials/_header.ejs %>
-<h6><a href=" #">Create New TinyURL</a></h6> 
+<h6><a href="/urls/new">Create New TinyURL</a></h6> 
     <ul>
     <h4><strong>My URLs</strong></h4>
     <% for (var url in urls) { %>
     <div>
-     <a href= "/urls/<%= url %>" class= "form-inline">Edit</a>
+     <a href="/urls/<%= url %>" class= "form-inline">Edit</a>
     </div>
     <div>
     <form method="POST" action="/urls/<%= url %>/delete" class= "form-inline">
-    <input type="submit" value="delete" />
+    <button type="submit" value="delete" class="btn btn-primary">Delete</button>
+    </form>
     </div>
     <li><strong><%= url%> :</strong> <a href="<%= urls[url] %>"><%= urls[url] %></a></li>
     <% }; %>
