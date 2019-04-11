@@ -50,15 +50,6 @@ function retrieveUser(email, password) {
   return false;
 }
 
-function checkEmail(email) {
-  for (var userEmail in users) {
-    if (userEmail[userId].email === email) {
-      return userEmail;
-    }
-  }
-  return false;
-}
-
 app.get("/", (req, res) => {
   res.send("Hello! This should be your home page but it is not...");
 });
