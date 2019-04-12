@@ -15,6 +15,12 @@
     <% include partials/_header %>
 
     <h3>Create TinyURL</h3>
+    <% if (users === undefined) { %>
+      <form class="form-inline" action="/login" method="get">
+        <div class="form-group mb-2">  
+        <input type="submit" value="Please Login" />
+      </form>
+      <% } else { %> 
     <form class="form-inline" action="/urls" method="POST">
       <div class="form-group mb-2">  
         <label for="longURL">Enter a URL:</label>
@@ -22,5 +28,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
+    <% }; %>
   </body>
 </html>
+    

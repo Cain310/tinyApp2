@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
-const urlDatabase = {
-  b2xVn2: "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
+var urlDatabase = {
+  b2xVn2: { longURL: "http://www.lighthouselabs.ca", userID: "userRandomID" },
+  lsm5xK: { longURL: "http://www.google.com", userID: "user2RandomID" }
 };
 
 const users = {
@@ -50,12 +50,25 @@ function retrieveUser(email, password) {
   return false;
 }
 
+function userUrls(userId) {
+  let urls = {};
+  for (shorturl in urlDatabase) {
+    if (userId === urlDatabase[shorturl].userID) {
+      urls[shorturl] = urlDatabase[shorturl];
+    }
+  }
+  return urls;
+}
+
 app.get("/", (req, res) => {
   res.send("Hello! This should be your home page but it is not...");
 });
 
 app.get("/urls", (req, res) => {
-  let templateVars = { urls: urlDatabase, users: users[req.cookies["userId"]] };
+  let templateVars = {
+    users: users[req.cookies["userId"]],
+    urls: userUrls(req.cookies["userId"])
+  };
   res.render("urls_index", templateVars);
 });
 
@@ -84,13 +97,18 @@ app.get("/urls/:shortURL", (req, res) => {
 });
 
 app.get("/u/:shortURL", (req, res) => {
-  const longURL = urlDatabase[req.params.shortURL];
+  console.log(urlDatabase);
+  const longURL = urlDatabase[req.params.shortURL].longURL;
+  // console.log(urlDatabase)
   res.redirect(longURL);
 });
 
 app.post("/urls", (req, res) => {
   const i = generateRandomString();
-  urlDatabase[i] = req.body.longURL;
+  urlDatabase[i] = {
+    longURL: req.body.longURL,
+    userID: req.cookies["userId"]
+  };
   res.redirect("/urls");
 });
 
@@ -129,13 +147,20 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-app.post("/urls/:shortURL/Delete", (req, res) => {
-  delete urlDatabase[req.params.shortURL];
-  res.redirect("/urls");
+app.post("/urls/:shortURL/delete", (req, res) => {
+  const userId = urlDatabase[req.params.shortURL].userID;
+  // console.log(req.cookies["userId"]);
+  if (userId === req.cookies["userId"]) {
+    delete urlDatabase[req.params.shortURL];
+    res.redirect("/urls");
+  } else {
+    res.status(400).send("Can't Delete URL");
+  }
 });
 
 app.post("/urls/:shortURL/", (req, res) => {
-  urlDatabase[req.params.shortURL] = req.body.longURL;
+  urlDatabase[req.params.shortURL].longURL = req.body.longURL;
+  console.log(urlDatabase);
 
   res.redirect("/urls/");
 });
