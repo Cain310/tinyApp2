@@ -1,3 +1,30 @@
+html {
+  box-sizing: border-box;
+}
+
 .constainer {
   background-image: url("/165770-Star_Wars.jpg");
+  margin-left: 33.33%;
+  margin-right: 33.33%;
+  margin-bottom: 50%;
+  padding-bottom: 100%;
+  padding-top: 140px;
+  width: 450px;
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  color: #244751;
+  background-color: #e9deff;
+  font-family: "Roboto Condensed", sans-serif;
 }
