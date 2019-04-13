@@ -1,4 +1,4 @@
-darthApp is a web application built with Node and Express that allows users to shorten long URLs.
+
 
 # TinyApp Project
 
