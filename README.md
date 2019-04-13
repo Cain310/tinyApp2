@@ -1,4 +1,4 @@
-darthApp is a web application built with Node and Express that allows users to shorten long URLs.
+
 
 # TinyApp Project
 
@@ -6,8 +6,9 @@ darthApp is a web application built with Node and Express that allows users to s
 
 ## Final Product
 
-!["screenshot description"](#)
-!["screenshot description"](#)
+
+!["Main Page"](https://github.com/Cain310/tinyApp2/blob/master/docs/darthApp.png)(#)
+!["Login Page"](https://github.com/Cain310/tinyApp2/blob/master/docs/darthApp1.png)(#)
 
 ## Dependencies
 
