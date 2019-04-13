@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
 
+app.use(express.static("public"));
 app.use(
   cookieSession({
     name: "session",
@@ -50,14 +51,11 @@ function generateRandomString() {
 
 function retrieveUser(email, password) {
   for (username in users) {
-    // console.log(password);
-    // console.log(users[username]["password"]);
     let userEmail = users[username]["email"];
     let userPassword = bcrypt.compareSync(
       password,
       users[username]["password"]
     );
-    // console.log(password);
     if (email === userEmail && userPassword) {
       return users[username];
     }
@@ -112,9 +110,7 @@ app.get("/urls/:shortURL", (req, res) => {
 });
 
 app.get("/u/:shortURL", (req, res) => {
-  console.log(urlDatabase);
   const longURL = urlDatabase[req.params.shortURL].longURL;
-  // console.log(urlDatabase)
   res.redirect(longURL);
 });
 
@@ -147,7 +143,6 @@ app.post("/register", (req, res) => {
     req.session.userId = i;
     res.redirect("/urls");
   }
-  console.log(users);
 });
 
 app.post("/login", (req, res) => {

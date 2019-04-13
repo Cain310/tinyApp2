@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,16 +9,16 @@
 </head>
 <body>
  <% include partials/_header %>
- <h3><strong>Please Login</strong></h3>
+ <h4><strong>Please Login</strong></h4>
  <% if(typeof(user) === "undefined"){ %> 
-<form class="form-inline" action="/login" method="POST">
-<div class="form-group mb-2"> 
-<label for="email">Email:</label>
-    <input class="form-control" type="email" name="email" placeholder="enter email here" style="width: 300px; margin: 1em" />
-<label for="password">Password:</label>
-    <input class="form-control" type="password" name="password" placeholder="enter password here" style="width: 300px; margin: 1em" />
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+    <form class="form-inline" action="/login" method="POST">
+        <div class="form-group mb-2"> 
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" placeholder="enter email here" style="width: 300px; margin: 1em" />
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" name="password" placeholder="enter password here" style="width: 300px; margin: 1em" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
 </form>
 <% } else{ %>  
     <form action="/logout" method="POST">
