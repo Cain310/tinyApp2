@@ -7,7 +7,7 @@ darthApp is a web application built with Node and Express that allows users to s
 ## Final Product
 
 !https://github.com/Cain310/tinyApp2/blob/master/docs/darthApp.png(#)
-!["screenshot description"](#)
+!["screenshot description"](https://github.com/Cain310/tinyApp2/blob/master/docs/darthApp.png)(#)
 
 ## Dependencies
 
