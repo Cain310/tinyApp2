@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,10 +8,9 @@
 </head>
 <body style="font-size:20px; padding:50px;">
 <% include partials/_header.ejs %>
-<h3><a href="/urls/new">-Create New TinyURL-</a></h3> 
     <ul>
     <h3><strong>My URLs</strong></h3>
-    <% for (var url in urls) { %>
+    <% for (let url in urls) { %>
     <div>
      <a href="/urls/<%= url %>" class= "form-inline">Edit</a>
     </div>
@@ -24,8 +22,6 @@
     <li><strong><%= url%> :</strong> <a href="<%= urls[url] %>"><%= urls[url].longURL %></a></li>
     <% }; %>
     </ul>
-    
     </form>
 </body>
 </html>
-
