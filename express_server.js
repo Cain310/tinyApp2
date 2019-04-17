@@ -156,8 +156,8 @@ app.post("/register", (req, res) => {
   } else if (!email || !password) {
     res.send("UH OH Please try Again!");
   } else {
-    users[i] = newUser;
-    req.session.userId = i;
+    users[hashedPassword] = newUser;
+    req.session.userId = hashedPassword;
     res.redirect("/urls");
   }
 });
