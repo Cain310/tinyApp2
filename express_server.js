@@ -83,7 +83,7 @@ function userUrls(userId) {
 
 //All GET routes here
 app.get("/", (req, res) => {
-  res.send("Hello! This should be your home page but it is not...");
+  res.redirect("/urls");
 });
 
 //Main urls page where only logged in user can create edit or delete urls.
@@ -156,8 +156,8 @@ app.post("/register", (req, res) => {
   } else if (!email || !password) {
     res.send("UH OH Please try Again!");
   } else {
-    users[hashedPassword] = newUser;
-    req.session.userId = hashedPassword;
+    users[randomID] = newUser;
+    req.session.userId = randomID;
     res.redirect("/urls");
   }
 });
@@ -165,6 +165,7 @@ app.post("/register", (req, res) => {
 //Login page retrieve users who have already registered using the helper function up top. Error messages if not already registered.
 app.post("/login", (req, res) => {
   const user = retrieveUser(req.body.email, req.body.password);
+  console.log(hashedPassword)
   if (user) {
     req.session.userId = user.id;
     res.redirect("/urls");
