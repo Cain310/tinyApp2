@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles.css">
-    </head>
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-      <header>
-        <body class="constainer" style="font-size:20px; padding:50px;">
-          <h1 style="font-size:60px;">Darth App</h1>
-            <% if (!users) { %>
-            <div class="form-group mb-2">
-            <form class="form-inline" action="/login" method="POST">
-             <a  href="/login"style= > Login </a > &nbsp; | &nbsp; <a href="/register" class= "form-inline"> Register</a>
-             </div>
-             <% if (typeof(showLogin) === "undefined" || showLogin) { %>
-             <div class="form-group mb-2">
-             <h5 style="color: darkred; margin: .1em;"><strong>Please Login</strong></h5>
-             </div>
-             <% } %>
-             </form>
-             <% } else { %>
-             <form action="/logout" method="POST">
-             <button type="submit" class="btn btn-primary">Sign Out</button>
-             <p>Logged in as <%= users.email %></p>
-             <h3><a href="/urls/new">-Create New TinyURL-</a></h3>
-             </form>
-            <% }; %>
-        </body>
-      </header>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <header>
+
+<body class="constainer" style="font-size:20px; padding:50px;">
+  <h1 style="font-size:60px;">Darth App</h1>
+  <% if (!users) { %>
+  <div class="form-group mb-2">
+    <form class="form-inline" action="/login" method="POST">
+      <a href="/login" style=> Login </a> &nbsp; | &nbsp; <a href="/register" class="form-inline"> Register</a>
+  </div>
+  <% if (typeof(showLogin) === "undefined" || showLogin) { %>
+  <div class="form-group mb-2">
+    <h5 style="color: #990000; margin: .1em;"><strong>Please Login</strong></h5>
+  </div>
+  <% } %>
+  </form>
+  <% } else { %>
+  <form action="/logout" method="POST">
+    <button type="submit" class="btn btn-primary">Sign Out</button>
+    <p>Logged in as <%= users.email %></p>
+    <h3><a href="/urls/new">-Create New TinyURL-</a></h3>
+  </form>
+  <% }; %>
+</body>
+</header>

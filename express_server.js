@@ -120,7 +120,11 @@ app.get("/urls/:shortURL", (req, res) => {
     longURL: urlDatabase[req.params.shortURL],
     users: users[req.session["userId"]]
   };
-  res.render("urls_show", templateVars);
+  if (!req.session["userId"]) {
+    res.status(400).send('get the heck outta here!')
+  } else {
+    res.render("urls_show", templateVars);
+  }
 });
 
 
@@ -165,7 +169,6 @@ app.post("/register", (req, res) => {
 //Login page retrieve users who have already registered using the helper function up top. Error messages if not already registered.
 app.post("/login", (req, res) => {
   const user = retrieveUser(req.body.email, req.body.password);
-  console.log(hashedPassword)
   if (user) {
     req.session.userId = user.id;
     res.redirect("/urls");
@@ -193,8 +196,14 @@ app.post("/urls/:shortURL/delete", (req, res) => {
 
 //working short url link to long url.
 app.post("/urls/:shortURL/", (req, res) => {
-  urlDatabase[req.params.shortURL].longURL = req.body.longURL;
-  res.redirect("/urls/");
+  if (urlDatabase[req.params.shortURL].userID !== req.session["userId"]) {
+    console.log(urlDatabase[req.params.shortURL].userID)
+    console.log(req.session["userId"])
+    return res.send('get the heck outta here!')
+  } else {
+    urlDatabase[req.params.shortURL].longURL = req.body.longURL;
+    res.redirect("/urls/");
+  }
 });
 
 app.listen(PORT, () => {
